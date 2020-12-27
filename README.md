@@ -91,11 +91,11 @@ Note that you may need to do additional processing of the output to handle incor
 
 **If you are otherwise unable to find a suitable model after attempting and successfully converting at least three other models**, you can document in your write-up what the models were, how you converted them, and why they failed, and then utilize any of the Intel® Pre-Trained Models that may perform better.
 
-I had used - [person-detection-retail-0013](https://download.01.org/opencv/2019/open_model_zoo/R3/20190905_163000_models_bin/person-detection-retail-0013/FP16/)
+I had used a pre-trained model - [person-detection-retail-0013](https://download.01.org/opencv/2019/open_model_zoo/R3/20190905_163000_models_bin/person-detection-retail-0013/FP16/)
 as the VM used for this project was set up using older version of OpenVINO toolkit (2019R3) which is quite outdated since now they have version 2021.1.
-The version is really important due to compatibilities, especially when you are trying to convert a custom model to IR.
+The versions are really important due to compatibilities, especially when you are trying to convert a custom model to IR.
 
-This is how I converted it 
+However, this is how I converted the custom model, which I chose YOLOV3 into IR.
 
 ![IR Conversion](https://github.com/SNNJM/People_Counter/blob/main/IRconvert.png)
 
