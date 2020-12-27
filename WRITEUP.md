@@ -92,22 +92,37 @@ So it's better to achieve a good balance of cost and performance.
 different models. However, you may also use this heading to detail how you converted 
 a successful model.]
 
+The model that I had able to successfully use with this is
+[person-detection-retail-0013]
+  - [https://download.01.org/opencv/2019/open_model_zoo/R3/20190905_163000_models_bin/person-detection-retail-0013/FP16/]
+
 In investigating potential people counter models, I tried each of the following three models:
 
-- Model 1: [Name]
-  - [Model Source]
-  - I converted the model to an Intermediate Representation with the following arguments...
-  - The model was insufficient for the app because...
-  - I tried to improve the model for the app by...
-  
-- Model 2: [Name]
-  - [Model Source]
-  - I converted the model to an Intermediate Representation with the following arguments...
-  - The model was insufficient for the app because...
-  - I tried to improve the model for the app by...
+- Model 1: [tensorflow YOLOV3]
+  - [https://github.com/mystic123/tensorflow-yolo-v3]
+  - Since this is a non-frozen model, I need to freeze it first using the command:
+    python convert_weights_pb.py --class_names coco.names --data_format NHWC --weights_file yolov3.weights 
+  - I converted the model to an Intermediate Representation with the following arguments: 
+    python mo_tf.py
+    --input_model /path/to/yolo_v3.pb
+    --transformations_config $MO_ROOT/extensions/front/tf/yolo_v3.json
+    --batch 1
 
-- Model 3: [Name]
-  - [Model Source]
-  - I converted the model to an Intermediate Representation with the following arguments...
-  - The model was insufficient for the app because...
-  - I tried to improve the model for the app by...
+  - The model was insufficient for the app because the VM used in Udacity project was set using OpenVINO 2019R3 which is oudated version of OpenVINO.
+    The one converted with OpenVINO toolkitversion 2021.2 works well.
+  - I tried to improve the model for the app by downgrading the version from 2021.2 to 2019R3 but the conversion fails die to certain deprecated things in 2019R3
+  
+- Model 2: [MobileNetV2]
+  - [https://github.com/PaddlePaddle/models/blob/release/1.5/PaddleCV/image_classification/models/mobilenet_v2.py]
+  - I converted the model to an Intermediate Representation with the following arguments:
+    python mo.py --input_model <INPUT_MODEL>.onnx
+  - The model was insufficient for the app because of the same reason as above
+
+
+- Model 3: Squeezenet 1.0
+  - cd openvino_path\deployment_tools\tools\model_downloader
+    python downloader.py --name squeezenet1.0 
+  - I converted the model to an Intermediate Representation with the following arguments
+    python mo.py --input_model <INPUT_MODEL>.caffemodel
+  - The model was insufficient for the app because of the same reason as above
+
