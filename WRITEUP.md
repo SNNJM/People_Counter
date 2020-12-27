@@ -98,8 +98,7 @@ The model that I had able to successfully use with this is
 
 In investigating potential people counter models, I tried each of the following three models:
 
-- Model 1: [tensorflow YOLOV3]
-  - [https://github.com/mystic123/tensorflow-yolo-v3]
+- Model 1: [tensorflow YOLOV3](https://github.com/mystic123/tensorflow-yolo-v3)
   - Since this is a non-frozen model, I need to freeze it first using the command:
     python convert_weights_pb.py --class_names coco.names --data_format NHWC --weights_file yolov3.weights 
   - I converted the model to an Intermediate Representation with the following arguments: 
@@ -112,8 +111,7 @@ In investigating potential people counter models, I tried each of the following 
     The one converted with OpenVINO toolkitversion 2021.2 works well.
   - I tried to improve the model for the app by downgrading the version from 2021.2 to 2019R3 but the conversion fails die to certain deprecated things in 2019R3
   
-- Model 2: [MobileNetV2]
-  - [https://github.com/PaddlePaddle/models/blob/release/1.5/PaddleCV/image_classification/models/mobilenet_v2.py]
+- Model 2: [MobileNetV2](https://github.com/PaddlePaddle/models/blob/release/1.5/PaddleCV/image_classification/models/mobilenet_v2.py)
   - I converted the model to an Intermediate Representation with the following arguments:
     python mo.py --input_model <INPUT_MODEL>.onnx
   - The model was insufficient for the app because of the same reason as above
