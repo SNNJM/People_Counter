@@ -33,10 +33,15 @@ Some of the potential reasons for handling custom layers are...
 ## Comparing Model Performance
 
 My method(s) to compare models before and after conversion to Intermediate Representations
-were by observing the type of files and the size of it. Non-frozen model should be in their initial state eg: .onnx, .caffe.
+were by observing the type of files and the size of it. 
+
+Non-frozen model should be in their initial state eg: .onnx, .caffe.
+
 These non-frozen models are reuqired to be frozen which produce .pb file.
+
 The .pb file is the used with model optimizer which can be found in OpenVINO toolkit's directory path.
-Success conversion would produce ,bin and .xml files which are know as IR(Intermediate Representative) files.
+
+Successful conversion would produce ,bin and .xml files which are know as IR(Intermediate Representative) files.
 
 
 The inference time of the model pre- and post-conversion was
@@ -59,13 +64,27 @@ This also could be used to aid in Covid-19 situations where the distance between
 Lighting, model accuracy, and camera focal length/image size have different effects on a
 deployed edge model. The potential effects of each of these are as follows...
 
-Lighting condition is the one of most impact factor in Computer Vision. Since the concept of video detection is actually process by each frame. The lighting condition is changing when object move, it's hard to keep good lighting. Bad lighting would cause ineffeciency of the fps(frame per second) process where certain place could become a blind spot or unidentified objects/person occur as the quality would be low.
+Lighting condition is the one of most impact factor in Computer Vision. 
+Since the concept of video detection is actually process by each frame. 
+The lighting condition is changing when object move, it's hard to keep good lighting.
+Bad lighting would cause ineffeciency of the fps(frame per second) process where certain place could become a blind spot or unidentified objects/person occur as the quality would be low.
 
-As mentioned above, it is proven that the model accuracy must be highly accurate. With low accuracy, it's hard to ensure detect object in each frame well. In this project, adjust the threshold of accuracy is one of important step. For different model the accuracy is different, so good model accuracy will be easier to set a good threshold which ensure great performance.
+As mentioned above, it is proven that the model accuracy must be highly accurate. 
+With low accuracy, it's hard to ensure detect object in each frame well. 
+In this project, adjust the threshold of accuracy is one of important step. 
+For different model the accuracy is different, so good model accuracy will be easier to set a good threshold which ensure great performance.
 
-Camera focal length depends on requirements of the user. The high focal length is required if user wants monitor the scene with wide angle. The low camera focal length is concerned, when user wants to monitor the narrow scene, like corner. The segmentation of object will be affect by camera focal length. In some scenario, the object could be small for high camera focal length, vice versa. The location of camera also crucial for an optimized result.
+Camera focal length depends on requirements of the user. 
+The high focal length is required if user wants monitor the scene with wide angle. 
+The low camera focal length is concerned, when user wants to monitor the narrow scene, like corner. 
+The segmentation of object will be affect by camera focal length.
+In some scenario, the object could be small for high camera focal length, vice versa. The location of camera also crucial for an optimized result.
 
-Image size depends on how much quality of output of image that user wants. For image with high resolution the image size will be larger. Of course, the model will give output with high resolution. However, the high resolution input also causes the model takes more time and memory to process. So it's better to achieve a good balance of cost and performance.
+Image size depends on how much quality of output of image that user wants. 
+For image with high resolution the image size will be larger. 
+Of course, the model will give output with high resolution. 
+However, the high resolution input also causes the model takes more time and memory to process. 
+So it's better to achieve a good balance of cost and performance.
 
 ## Model Research
 
